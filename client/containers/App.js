@@ -3,10 +3,11 @@
  */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import * as chatAction from '../actions';
 import Message from '../components/Message'
+import EnterMessage from '../components/EnterMessageArea';
+require('../assets/css/style.css');
 
 class App extends React.Component {
     constructor () {
@@ -24,7 +25,6 @@ class App extends React.Component {
             this.setState ({
                 message : ''
             });
-            ReactDOM.findDOMNode(this.refs.chatText).value = ''
         }
     }
 
@@ -38,16 +38,17 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <h1>Hello</h1>
-
-                <input type="text" onChange={this.changeHandler} ref= "chatText"/>
-                <button onClick={this.sendMessage}>Send</button>
-
-                {this.props.messages.map(
-                    function (message, i) {
-                        return <Message message={message.message} key={i}/>
-                    }
-                )}
+                <div className="chatArea">
+                    {this.props.messages.map(
+                        function (message, i) {
+                            return <Message message={message.message} key={i}/>
+                        }
+                    )}
+                </div>
+                
+                <div className="inputArea">
+                    <EnterMessage changeHandler={this.changeHandler} sendMessage={this.sendMessage} />
+                </div>
                 
             </div>
         )
