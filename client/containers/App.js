@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import * as chatAction from '../actions';
 import Message from '../components/Message'
@@ -18,7 +19,13 @@ class App extends React.Component {
     }
 
     sendMessage () {
-        this.props.dispatch(chatAction.sendMessage(this.state.message));
+        if(this.state.message){
+            this.props.dispatch(chatAction.sendMessage(this.state.message));
+            this.setState ({
+                message : ''
+            });
+            ReactDOM.findDOMNode(this.refs.chatText).value = ''
+        }
     }
 
     changeHandler (e) {
@@ -33,7 +40,7 @@ class App extends React.Component {
             <div>
                 <h1>Hello</h1>
 
-                <input type="text" onChange={this.changeHandler}/>
+                <input type="text" onChange={this.changeHandler} ref= "chatText"/>
                 <button onClick={this.sendMessage}>Send</button>
 
                 {this.props.messages.map(

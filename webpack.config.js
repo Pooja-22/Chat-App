@@ -11,7 +11,7 @@ export default {
     noInfo: false,
     entry: [
         'webpack-hot-middleware/client?reload=true',
-        './src/index'
+        './client/index'
     ],
     target: 'web',
     output: {
@@ -20,7 +20,7 @@ export default {
         filename: 'bundle.js'
     },
     devServer: {
-        contentBase: './src'
+        contentBase: './client'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -28,7 +28,7 @@ export default {
     ],
     module: {
         loaders: [
-            {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
+            {test: /\.js$/, include: path.join(__dirname, 'client'), loaders: ['babel']},
             {test: /(\.css)$/, loaders: ['style', 'css']},
             {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
             {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},
