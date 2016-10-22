@@ -28,7 +28,6 @@ export default function messagesLoaded (user, messages) {
 }
 
 export function sendMessage(message) {
-    console.log('send action---')
     return (dispatch) => {
         axios({
             method: 'post',

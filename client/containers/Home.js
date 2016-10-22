@@ -34,7 +34,6 @@ class Home extends React.Component {
     }
 
     sendMessage () {
-        console.log("sending--------------")
         if(this.state.message){
             this.props.dispatch(chatAction.sendMessage(this.state.message));
             this.setState ({
