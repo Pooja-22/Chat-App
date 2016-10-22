@@ -12,7 +12,8 @@ class Login extends React.Component {
     constructor() {
         super();
         this.state = {
-            userName: ''
+            userName: '',
+            errorMessage : false
         };
 
         this.changeHandler = this.changeHandler.bind(this);
@@ -35,7 +36,12 @@ class Login extends React.Component {
     }
 
     login() {
-        this.props.dispatch(loginActions.login(this.state.userName))
+        if(this.state.userName)
+            this.props.dispatch(loginActions.login(this.state.userName))
+        else
+            this.setState({
+                errorMessage : true
+            })
     }
 
     render() {
@@ -43,6 +49,9 @@ class Login extends React.Component {
             <div>
                 <input type="text" value={this.state.userName} onChange={this.changeHandler}/>
                 <button onClick={this.login}>Submit</button>
+                <p className={!this.state.errorMessage ? "classHide" : "classShow"}>
+                    Please enter user name
+                </p>
             </div>
         )
     }
