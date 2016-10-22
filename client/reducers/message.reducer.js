@@ -5,9 +5,15 @@
 import {MESSAGE_RECEIVED, MESSAGES_LOADED} from '../constants';
 
 let initialState = {
-    user : '',
+    user : {
+        userName : '',
+        userId : ''
+    },
     messages : [{
-        from : '',
+        from : {
+            name : '',
+            id : ''
+        },
         text : '',
         time : ''
     }]

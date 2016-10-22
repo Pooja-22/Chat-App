@@ -17,7 +17,8 @@ class Home extends React.Component {
     constructor () {
         super();
         this.state = {
-            message : ''
+            message : '',
+            token : ''
         };
         this.sendMessage = this.sendMessage.bind(this);
         this.changeHandler = this.changeHandler.bind(this);
@@ -25,6 +26,9 @@ class Home extends React.Component {
 
     componentWillMount() {
         var token = getCookie('token');
+        this.setState({
+            token : token
+        })
         if(!token)
             browserHistory.push({
                 pathname: '/'
@@ -35,7 +39,10 @@ class Home extends React.Component {
 
     sendMessage () {
         if(this.state.message){
-            this.props.dispatch(chatAction.sendMessage(this.state.message, this.props.user));
+            this.props.dispatch(chatAction.sendMessage(this.state.message, {
+                name : this.props.user.userName,
+                id : this.state.token
+            }));
             this.setState ({
                 message : ''
             });
@@ -51,7 +58,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <h1>Hello {this.props.user}</h1>
+                <h1>Hello {this.props.user.userName}</h1>
                 <div className="chatArea">
                     {this.props.messages.map(
                         function (message, i) {

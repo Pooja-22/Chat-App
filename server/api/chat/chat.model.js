@@ -12,7 +12,12 @@ var ChatSchema = new Schema({
         type : String
     },
     from : {
-        type : String
+        id : {
+            type : String
+        },
+        name: {
+            type : String
+        }
     },
     time: {type: Date, default: Date.now()}
 });

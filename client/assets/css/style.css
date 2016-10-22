@@ -12,3 +12,12 @@
 .chatArea {
     background: #e2e2e2;
 }
+
+.left {
+    margin-left: 0;
+    background : red;
+}
+.right {
+    margin-right: 0;
+    background : blue;
+}

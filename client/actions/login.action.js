@@ -20,7 +20,7 @@ export function login (userName) {
             browserHistory.push({
                 pathname: '/home'
             });
-            dispatch(loadMessages(response.data.userName));
+            dispatch(loadMessages(response.data.userName, response.data._id));
         })
     };
     
@@ -35,7 +35,7 @@ export function getUser (id) {
                 id : id
             }
         }).then((response) => {
-            dispatch(loadMessages(response.data.userName));
+            dispatch(loadMessages(response.data.userName, response.data._id));
         })
     };
 

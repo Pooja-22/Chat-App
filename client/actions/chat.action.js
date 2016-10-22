@@ -6,22 +6,25 @@ import {MESSAGE_RECEIVED, MESSAGE_SENT, MESSAGES_LOADED} from '../constants';
 import axios from 'axios';
 import {socket} from '../socket';
 
-export function loadMessages(user) {
+export function loadMessages(userName, userId) {
     return (dispatch) => {
         axios({
             method: 'get',
             url: '/api/chat'
         }).then((response) => {
-            dispatch(messagesLoaded(user, response.data));
+            dispatch(messagesLoaded(userName, userId, response.data));
         })
     }
 }
 
-export default function messagesLoaded (user, messages) {
+export default function messagesLoaded (userName, userId, messages) {
     return {
         type : MESSAGES_LOADED,
         state : {
-            user : user,
+            user : {
+                userName : userName,
+                userId : userId
+            },
             messages : messages
         }
     }
