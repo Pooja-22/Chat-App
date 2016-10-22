@@ -4,14 +4,28 @@
 
 import express from 'express';
 import webpack from 'webpack';
+import mongoose from 'mongoose';
 import path from 'path';
 import config from '../webpack.config.js';
 import open from 'open';
 import SocketIo from 'socket.io';
+var bodyParser = require('body-parser');
 
 const port = 3000;
 const app = express();
 const compiler = webpack(config);
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+require('../server/routes')(app);
+
+mongoose.connect('mongodb://localhost/chat-app');
+mongoose.connection.on('error', function (err) {
+        console.error('MongoDB connection error: ' + err);
+        process.exit(-1);
+    }
+);
 
 app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
@@ -34,8 +48,8 @@ const server = app.listen(port, function (err) {
 
 const io = new SocketIo(server);
 
-io.on('connection', (socket) => {
-    socket.on('chat', (data) => {
-        socket.emit('chat', data);
+io.on('connection', function(socket) {
+    socket.on('chat', function(msg) {
+        socket.emit('chat', msg);
     });
 });

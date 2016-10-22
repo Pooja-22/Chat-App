@@ -2,17 +2,23 @@
  * Created by pooja on 21/10/16.
  */
 
-import {SEND_MESSAGE, RECEIVE_MESSAGE, MESSAGE_SENT} from '../constants'
+import {MESSAGE_RECEIVED, MESSAGES_LOADED} from '../constants';
 
-export default function message(state = [], action) {
+let initialState = {
+    user : '',
+    messages : []
+};
+
+export default function message(state = initialState, action) {
 
     switch (action.type) {
-        case SEND_MESSAGE:
-            return action.message;
-        case RECEIVE_MESSAGE:
-            return [...state, action.message];
-        case MESSAGE_SENT:
-            return;
+
+        case MESSAGES_LOADED :
+            return Object.assign({}, state, {user : action.state.user, messages: [...action.state.messages]});
+
+        case MESSAGE_RECEIVED:
+            return Object.assign({}, state, {messages: [...state.messages, action.message]});
+        
         default :
             return state
     }
