@@ -52,4 +52,10 @@ io.on('connection', function(socket) {
     socket.on('chat', function(data) {
         socket.emit('chat', data);
     });
+    socket.on('typing', function (data) {
+        socket.broadcast.emit('typing', data.user);
+    });
+    socket.on('stop typing', function (data) {
+        socket.broadcast.emit('stop typing', data.user);
+    });
 });

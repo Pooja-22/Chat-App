@@ -21,3 +21,11 @@
     margin-right: 0;
     background : blue;
 }
+
+.classHide {
+    display : none
+}
+
+.classShow{
+    display : block;
+}

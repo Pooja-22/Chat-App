@@ -9,16 +9,19 @@ import * as userAction from '../actions/login.action';
 import Message from '../components/Message'
 import EnterMessage from '../components/EnterMessageArea';
 import {getCookie} from '../services/utilService';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
+import {socket} from '../socket';
+
 
 require('../assets/css/style.css');
 
 class Home extends React.Component {
-    constructor () {
+    constructor() {
         super();
         this.state = {
-            message : '',
-            token : ''
+            message: '',
+            token: '',
+            typing: false
         };
         this.sendMessage = this.sendMessage.bind(this);
         this.changeHandler = this.changeHandler.bind(this);
@@ -27,34 +30,52 @@ class Home extends React.Component {
     componentWillMount() {
         var token = getCookie('token');
         this.setState({
-            token : token
+            token: token
         })
-        if(!token)
+        if (!token)
             browserHistory.push({
                 pathname: '/'
             });
-        else 
+        else
             this.props.dispatch(userAction.getUser(token))
     }
 
-    sendMessage () {
-        if(this.state.message){
+    componentDidMount() {
+        socket.on('typing', user => {
+            this.props.dispatch(chatAction.typing(user))
+            }
+        );
+        socket.on('stop typing', user => {
+            this.props.dispatch(chatAction.stopTyping(user))
+            }
+        );
+    }
+
+    sendMessage() {
+        if (this.state.message) {
             this.props.dispatch(chatAction.sendMessage(this.state.message, {
-                name : this.props.user.userName,
-                id : this.state.token
+                name: this.props.user.userName,
+                id: this.state.token
             }));
-            this.setState ({
-                message : ''
+            socket.emit('stop typing', {user: this.props.typingBy});
+            this.setState({typing: false});
+            this.setState({
+                message: ''
             });
         }
     }
 
-    changeHandler (e) {
-        this.setState ({
-            message : e.target.value
+    changeHandler(event) {
+        if (event.target.value.length > 0 && !this.state.typing) {
+            socket.emit('typing', {user: this.props.user.userName});
+            this.setState({typing: true});
+        }
+        this.setState({
+            message: event.target.value
         })
 
     }
+
     render() {
         return (
             <div>
@@ -67,6 +88,10 @@ class Home extends React.Component {
                     )}
                 </div>
 
+                <p className={!this.props.typingBy ? "classHide" : "classShow"}>
+                    {this.props.typingBy} is typing...
+                </p>
+
                 <div className="inputArea">
                     <EnterMessage changeHandler={this.changeHandler} sendMessage={this.sendMessage}/>
                 </div>
@@ -78,7 +103,8 @@ class Home extends React.Component {
 function mapStateToProps(state) {
     return {
         messages: state.message.messages,
-        user: state.message.user
+        user: state.message.user,
+        typingBy: state.message.typingBy
     }
 }
 

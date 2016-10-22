@@ -2,7 +2,7 @@
  * Created by pooja on 21/10/16.
  */
 
-import {MESSAGE_RECEIVED, MESSAGES_LOADED} from '../constants';
+import {MESSAGE_RECEIVED, MESSAGE_SENT, MESSAGES_LOADED, TYPING, STOP_TYPING} from '../constants';
 
 let initialState = {
     user : {
@@ -16,7 +16,8 @@ let initialState = {
         },
         text : '',
         time : ''
-    }]
+    }],
+    typingBy : ''
 };
 
 export default function message(state = initialState, action) {
@@ -28,6 +29,12 @@ export default function message(state = initialState, action) {
 
         case MESSAGE_RECEIVED:
             return Object.assign({}, state, {messages: [...state.messages, action.message]});
+        
+        case TYPING :
+            return Object.assign({}, state, {typingBy: action.userName});
+
+        case STOP_TYPING :
+            return Object.assign({}, state, {typingBy: ''});
         
         default :
             return state

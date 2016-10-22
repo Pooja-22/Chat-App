@@ -2,7 +2,7 @@
  * Created by pooja on 21/10/16.
  */
 
-import {MESSAGE_RECEIVED, MESSAGE_SENT, MESSAGES_LOADED} from '../constants';
+import {MESSAGE_RECEIVED, MESSAGE_SENT, MESSAGES_LOADED, TYPING, STOP_TYPING} from '../constants';
 import axios from 'axios';
 import {socket} from '../socket';
 
@@ -51,6 +51,20 @@ export function messageReceived (message) {
         message
     }
 }
+
+export function typing (userName) {
+    return {
+        type: TYPING,
+        userName
+    }
+}
+
+export function stopTyping () {
+    return {
+        type: STOP_TYPING
+    }
+}
+
 
 
 
