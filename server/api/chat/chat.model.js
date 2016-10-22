@@ -8,9 +8,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ChatSchema = new Schema({
-    message: {
+    text: {
         type : String
-    }
+    },
+    from : {
+        type : String
+    },
+    time: {type: Date, default: Date.now()}
 });
 
 module.exports = mongoose.model('Chat', ChatSchema);

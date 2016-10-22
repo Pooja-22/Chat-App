@@ -49,7 +49,7 @@ const server = app.listen(port, function (err) {
 const io = new SocketIo(server);
 
 io.on('connection', function(socket) {
-    socket.on('chat', function(msg) {
-        socket.emit('chat', msg);
+    socket.on('chat', function(data) {
+        socket.emit('chat', data);
     });
 });

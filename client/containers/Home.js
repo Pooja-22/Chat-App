@@ -35,7 +35,7 @@ class Home extends React.Component {
 
     sendMessage () {
         if(this.state.message){
-            this.props.dispatch(chatAction.sendMessage(this.state.message));
+            this.props.dispatch(chatAction.sendMessage(this.state.message, this.props.user));
             this.setState ({
                 message : ''
             });
@@ -55,7 +55,7 @@ class Home extends React.Component {
                 <div className="chatArea">
                     {this.props.messages.map(
                         function (message, i) {
-                            return <Message message={message.message} key={i}/>
+                            return <Message message={message} key={i}/>
                         }
                     )}
                 </div>

@@ -6,7 +6,11 @@ import {MESSAGE_RECEIVED, MESSAGES_LOADED} from '../constants';
 
 let initialState = {
     user : '',
-    messages : []
+    messages : [{
+        from : '',
+        text : '',
+        time : ''
+    }]
 };
 
 export default function message(state = initialState, action) {

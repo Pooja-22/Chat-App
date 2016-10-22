@@ -27,16 +27,17 @@ export default function messagesLoaded (user, messages) {
     }
 }
 
-export function sendMessage(message) {
+export function sendMessage(message, user) {
     return (dispatch) => {
         axios({
             method: 'post',
             url: '/api/chat',
             data : {
-                message : message
+                text : message,
+                from : user
             }
         }).then((response) => {
-            socket.emit('chat', {message : message})
+            socket.emit('chat', {text : message, from : user, time : response.data.time})
         })
     }
 }
