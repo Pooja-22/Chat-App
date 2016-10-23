@@ -40,7 +40,8 @@ export function sendMessage(message, user) {
                 from : user
             }
         }).then((response) => {
-            socket.emit('chat', {text : message, from : user, time : response.data.time})
+            socket.emit('chat', {text : message, from : user, time : response.data.time});
+            dispatch(messageReceived({text : message, from : user, time : response.data.time}))
         })
     }
 }
