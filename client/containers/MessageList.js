@@ -3,19 +3,35 @@
  */
 
 import React from 'react';
-import Message from './Message'
+import Message from './Message';
+import {getCookie} from '../services/utilService';
 
 class MessageList extends React.Component {
 
-    render() {
+    constructor() {
+        super()
+        this.state = {
+            token: ''
+        }
+    }
 
-        let {messages} = this.props;
+    componentDidMount() {
+        var token = getCookie('token');
+        this.setState({
+            token: token
+        })
+    }
+
+    render() {
+        console.log(this.state)
+
+        let {messages, className} = this.props;
 
         return (
-            <div>
+            <div className={className}>
                 {messages.map(
                     function (message, i) {
-                        return <Message message={message} key={i}/>
+                        return <Message message={message} key={i} />
                     }
                 )}
             </div>

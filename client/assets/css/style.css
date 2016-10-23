@@ -33,11 +33,11 @@
 
 .loginDiv button {
     background: linear-gradient(#3CB371, #3CB371);
-    width: 100px;
+    width: 120px;
     height: 45px;
     border-radius: 7px;
     margin-top: 40px;
-    margin-left: 61px;
+    margin-left: 47px;
     font-size: 25px;
     color: #fff;
 }
@@ -65,12 +65,21 @@ p {
     padding:10px;
 }
 
-.home div:first-child {
+.header {
     padding-bottom : 10px;
     border-bottom : 1px double #eee;
+    margin-bottom : 10px;
 }
 
-.home div button {
+.header span {
+    width: 50%;
+    font-size: 34px;
+    font-weight: 500;
+    margin-top: -6px;
+    color: #fff
+}
+
+.header button, .home div:nth-child(4) button {
     padding: 10px 30px;
     font-weight: bold;
     color: #FFF;
@@ -83,50 +92,49 @@ p {
     letter-spacing : 1px;
 }
 
-.home div:first-child span {
-    width: 50%;
-    font-size: 34px;
-    font-weight: 500;
-    margin-top: -6px;
-    color: #fff
-}
-
-.home div:nth-child(2) {
+.chatArea {
     max-height:510px;
-    overflow-y : scroll;
+    overflow:auto;
     overflow-x: hidden;
 }
 
-.home div:nth-child(4) {
+.subChatArea {
+    width : 45%;
+    border-radius: 7px;
+    background-color: #cfd8dc;
+    margin-bottom : 10px;
+    min-height : 60px;
+    padding : 10px;
+}
+
+.subChatArea p {
+    padding:10px;
+    margin-top : -75px;
+    margin-left : 80px;
+}
+
+.circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    background : #fff;
+}
+
+.inputArea {
     height : 40px;
     margin-top:8px;
 }
 
-.home div:nth-child(4) input {
-    width:84%;
+.inputArea input {
+    width:83%;
     height : 35px;
+    font-size : 18px;
 }
 
-.home div:nth-child(4) input:focus {
+.inputArea input:focus {
     outline: none;
     border-color: #9ecaed;
     box-shadow: 0 0 5px #9ecaed;
-}
-
-.left {
-    margin-left: 50%;
-    border-radius: 7px;
-    background-color: #cfd8dc;
-    width: 48%;
-    padding: 1%;
-}
-
-.right {
-    border-radius: 7px;
-    background-color: #cfd8dc;
-    width: 48%;
-    padding: 1%;
-
 }
 
 .classHide {
@@ -135,9 +143,25 @@ p {
 
 .classShow {
     display: block;
+    color : #fff;
 }
 
-.sendBy {
-    font-size: 15px;
+.left {
+    float : left;
+    clear: both;
 
+}
+
+.right {
+    float : right;
+    clear: both;
+
+}
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
 }

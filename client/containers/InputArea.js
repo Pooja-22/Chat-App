@@ -10,10 +10,10 @@ class InputArea extends React.Component {
 
     render() {
         
-        let {value, changeHandler, sendMessage } = this.props;
+        let {value, changeHandler, className, sendMessage } = this.props;
         
         return (
-            <div>
+            <div className={className}>
                 
                 <InputField value={value} onChange={changeHandler} type="input" placeholder="Type your message here..." required/>
                 

@@ -9,11 +9,11 @@ class Header extends React.Component {
 
     render() {
 
-        let {clickHandler, btnText, greetings, spanText} = this.props;
+        let {clickHandler, btnText, greetings, spanText , className} = this.props;
         
         return (
             
-            <div>
+            <div className={className}>
                 <Button onClick={clickHandler} value={btnText}/>
                 <span>
                     {greetings} {spanText}

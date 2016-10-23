@@ -93,7 +93,7 @@ class Home extends React.Component {
         return (
             <div className="home">
                 
-                <Header clickHandler={this.logOut} btnText='Log Out' spanText={this.props.user.userName} greetings="Hello"/>
+                <Header clickHandler={this.logOut} btnText='Log Out' spanText={this.props.user.userName} greetings="Hello" className="header"/>
                 
                 <MessageList messages={this.props.messages} className="chatArea"/>
 
@@ -108,6 +108,8 @@ class Home extends React.Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
+
     return {
         messages: state.message.messages,
         user: state.message.user,
