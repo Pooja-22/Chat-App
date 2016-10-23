@@ -8,10 +8,11 @@ import * as chatAction from '../actions/chat.action';
 import * as userAction from '../actions/login.action';
 import Message from '../components/Message'
 import EnterMessage from '../components/EnterMessageArea';
-import {getCookie} from '../services/utilService';
+import {getCookie, setCookie} from '../services/utilService';
 import {browserHistory} from 'react-router';
 import {socket} from '../socket';
-
+import Paragraph from '../components/Paragraph';
+import Button from '../components/Button';
 
 require('../assets/css/style.css');
 
@@ -25,6 +26,7 @@ class Home extends React.Component {
         };
         this.sendMessage = this.sendMessage.bind(this);
         this.changeHandler = this.changeHandler.bind(this);
+        this.logOut = this.logOut.bind(this);
     }
 
     componentWillMount() {
@@ -41,6 +43,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
+        console.log("called-------nn--")
         socket.on('typing', user => {
             this.props.dispatch(chatAction.typing(user))
             }
@@ -79,6 +82,13 @@ class Home extends React.Component {
 
     }
 
+    logOut () {
+        setCookie('token', '');
+        browserHistory.push({
+            pathname: '/'
+        });
+    }
+
     render() {
         return (
             <div>
@@ -90,14 +100,16 @@ class Home extends React.Component {
                         }
                     )}
                 </div>
+                <Button onClick={this.logOut} value="Log Out"/>
 
-                <p className={(!this.props.typingBy || this.props.typingBy === this.props.user.userName) ? "classHide" : "classShow"}>
-                    {this.props.typingBy} is typing...
-                </p>
+
+                <Paragraph className={(!this.props.typingBy || this.props.typingBy === this.props.user.userName) ? "classHide" : "classShow"}
+                           />
 
                 <div className="inputArea">
                     <EnterMessage value = {this.state.message} changeHandler={this.changeHandler} sendMessage={this.sendMessage}/>
                 </div>
+
             </div>
         )
     }

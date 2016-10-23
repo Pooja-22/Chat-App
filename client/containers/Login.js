@@ -11,6 +11,8 @@ import InputField from '../components/InputField';
 import Button from '../components/Button';
 import Paragraph from '../components/Paragraph';
 
+require('../assets/css/style.css');
+
 class Login extends React.Component {
     constructor() {
         super();
@@ -18,7 +20,6 @@ class Login extends React.Component {
             userName: '',
             errorMessage : false
         };
-
         this.changeHandler = this.changeHandler.bind(this);
         this.login = this.login.bind(this);
         this.signUp = this.signUp.bind(this);
