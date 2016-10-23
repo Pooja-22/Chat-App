@@ -17,11 +17,7 @@ export function signUp(userName) {
             }
         }).then((response) => {
             if (response.data._id) {
-                setCookie('token', response.data._id);
-                browserHistory.push({
-                    pathname: '/home'
-                });
-                dispatch(loadMessages(response.data.userName, response.data._id));
+                dispatchAction(response)
             }
         }).catch((err) => {
             console.log('Something went wrong',err);
@@ -39,11 +35,7 @@ export function login(userName) {
             }
         }).then((response) => {
             if (response.data._id) {
-                setCookie('token', response.data._id);
-                browserHistory.push({
-                    pathname: '/home'
-                });
-                dispatch(loadMessages(response.data.userName, response.data._id));
+                dispatchAction(response)
             }
         }).catch((err) => {
             console.log('Something went wrong',err);
@@ -65,4 +57,12 @@ export function getUser(id) {
         })
     };
 
+}
+
+function dispatchAction (response) {
+    setCookie('token', response.data._id);
+    browserHistory.push({
+        pathname: '/home'
+    });
+    dispatch(loadMessages(response.data.userName, response.data._id));
 }

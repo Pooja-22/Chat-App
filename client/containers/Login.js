@@ -22,6 +22,7 @@ class Login extends React.Component {
         this.changeHandler = this.changeHandler.bind(this);
         this.login = this.login.bind(this);
         this.signUp = this.signUp.bind(this);
+        this.showError = this.showError.bind(this);
     }
 
     componentWillMount() {
@@ -42,18 +43,20 @@ class Login extends React.Component {
         if(this.state.userName)
             this.props.dispatch(loginActions.login(this.state.userName))
         else
-            this.setState({
-                errorMessage : true
-            })
+            this.showError()
     }
 
     signUp() {
         if(this.state.userName)
             this.props.dispatch(loginActions.signUp(this.state.userName))
         else
-            this.setState({
-                errorMessage : true
-            })
+            this.showError()
+    }
+
+    showError () {
+        this.setState({
+            errorMessage : true
+        })
     }
 
     render() {

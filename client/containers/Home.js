@@ -50,7 +50,6 @@ class Home extends React.Component {
             }
         );
         socket.on('chat', (data) => {
-            console.log("recieved message")
             this.props.dispatch(chatAction.messageReceived(data))
         });
     }
