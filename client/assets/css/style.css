@@ -1,26 +1,26 @@
 /* Root component */
 .main {
-    width : 60%;
+    width: 60%;
     margin: auto;
 }
 
 /* Login component */
 
 .loginDiv {
-    width : 50%;
-    margin:auto;
-    min-height:273px;
-    padding : 20px;
-    margin-top:150px;
+    width: 50%;
+    margin: auto;
+    min-height: 273px;
+    padding: 20px;
+    margin-top: 150px;
 }
 
 .loginDiv input {
-    margin-left : 15%;
-    margin-top : 57px;
-    height : 45px;
-    width:260px;
-    font-size : 18px;
-    text-align:center;
+    margin-left: 15%;
+    margin-top: 57px;
+    height: 45px;
+    width: 260px;
+    font-size: 18px;
+    text-align: center;
     border-radius: 7px;
 }
 
@@ -32,25 +32,29 @@
 
 .loginDiv button {
     background: linear-gradient(#3CB371, #3CB371);
-    width : 100px;
-    height : 45px;
+    width: 100px;
+    height: 45px;
     border-radius: 7px;
-    margin-top:40px;
-    margin-left:61px;
-    font-size : 18px;
-    color : #fff;
+    margin-top: 40px;
+    margin-left: 61px;
+    font-size: 18px;
+    color: #fff;
 }
 
 .loginDiv p {
-    text-align:center;
-    margin-top:25px;
-    font-size : 20px;
-    color : red;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 20px;
+    color: red;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    text-align:center;
-    font-size : 18px;
+    text-align: center;
+    font-size: 18px;
+}
+
+p {
+    word-wrap: break-word
 }
 
 .messageArea {
@@ -68,24 +72,26 @@
     margin-left: 50%;
     border-radius: 7px;
     background-color: #cfd8dc;
-    width:48%;
-    padding:1%;
+    width: 48%;
+    padding: 1%;
 }
+
 .right {
     border-radius: 7px;
     background-color: #cfd8dc;
-    width:48%;
-    padding:1%;
+    width: 48%;
+    padding: 1%;
 
 }
 
 .classHide {
-    display : none
+    display: none
 }
 
-.classShow{
-    display : block;
+.classShow {
+    display: block;
 }
+
 .sendBy {
     font-size: 15px;
 
@@ -101,9 +107,10 @@
     outline: none;
     float: right;
 }
+
 .userName {
     width: 50%;
-    font-size : 34px;
-    font-weight : 500;
+    font-size: 34px;
+    font-weight: 500;
     margin-top: -6px;
 }

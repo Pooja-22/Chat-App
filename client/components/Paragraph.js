@@ -8,10 +8,10 @@ class Paragraph extends React.Component {
 
     render() {
 
-        let {value, className } = this.props;
+        let {value, className, typingBy, children } = this.props;
 
         return (
-            <p className={this.props.className}>{this.props.typingBy} {this.props.value}</p>
+            <p className={className}>{typingBy} {value} {children}</p>
         );
 
     }

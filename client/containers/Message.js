@@ -4,6 +4,7 @@
 
 import React from 'react';
 import {getCookie} from '../services/utilService';
+import Paragraph from '../components/Paragraph';
 
 class Message extends React.Component {
 
@@ -30,17 +31,14 @@ class Message extends React.Component {
 
     render() {
         return (
-            <p className={(this.state.sendByMe ? 'left' : 'right')}>
+            <Paragraph className={(this.state.sendByMe ? 'left' : 'right')}>
                 <span>
                     {this.props.message.text}<br/>
                 </span>
                 <span className="sendBy">
                     {this.state.sendByMe ? '' : this.props.message.from.name}<br/>
                 </span>
-                <span>
-                    <br/>
-                </span>
-            </p>
+            </Paragraph>
         )
     }
 }
