@@ -12,6 +12,7 @@ class Message extends React.Component {
         this.state = {
             sendByMe: ''
         }
+
     }
 
     componentWillMount() {
@@ -28,14 +29,17 @@ class Message extends React.Component {
     }
 
     render() {
-
         return (
             <p className={(this.state.sendByMe ? 'left' : 'right')}>
-                {this.props.message.text}<br/>
-                By--{this.props.message.from.name}<br/>
-                @--{this.props.message.time}<br/>
-                {this.props.message.from.id}<br/>
-
+                <span>
+                    {this.props.message.text}<br/>
+                </span>
+                <span className="sendBy">
+                    {this.state.sendByMe ? '' : this.props.message.from.name}<br/>
+                </span>
+                <span>
+                    <br/>
+                </span>
             </p>
         )
     }

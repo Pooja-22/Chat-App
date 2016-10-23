@@ -9,17 +9,19 @@
     margin-top: 20px;
 }
 
-.chatArea {
-    background: #e2e2e2;
-}
-
 .left {
-    margin-left: 0;
-    background : red;
+    margin-left: 50%;
+    border-radius: 7px;
+    background-color: #cfd8dc;
+    width:48%;
+    padding:1%;
 }
 .right {
-    margin-right: 0;
-    background : blue;
+    border-radius: 7px;
+    background-color: #cfd8dc;
+    width:48%;
+    padding:1%;
+
 }
 
 .classHide {
@@ -28,4 +30,29 @@
 
 .classShow{
     display : block;
+}
+.sendBy {
+    font-size: 15px;
+
+}
+.main {
+    width : 60%;
+    margin: auto;
+
+}
+.logout {
+    padding: 10px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #bdc3c7;
+    background: linear-gradient(#bdc3c7, #95a5a6);
+    border: none;
+    outline: none;
+    float: right;
+}
+.userName {
+    width: 50%;
+    font-size : 34px;
+    font-weight : 500;
+    margin-top: -6px;
 }

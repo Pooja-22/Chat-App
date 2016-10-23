@@ -11,7 +11,7 @@ class Paragraph extends React.Component {
         let {value, className } = this.props;
 
         return (
-            <p className={this.props.className}>{this.props.value}</p>
+            <p className={this.props.className}>{this.props.typingBy} {this.props.value}</p>
         );
 
     }

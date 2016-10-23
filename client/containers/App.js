@@ -4,6 +4,7 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
+require('../assets/css/style.css');
 
 class App extends React.Component {
     constructor () {
@@ -12,7 +13,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="main">
                 {
                     this.props.children
                 }

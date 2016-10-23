@@ -43,7 +43,6 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        console.log("called-------nn--")
         socket.on('typing', user => {
             this.props.dispatch(chatAction.typing(user))
             }
@@ -92,7 +91,8 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <h1>Hello {this.props.user.userName}</h1>
+                <span className="userName">Hello {this.props.user.userName}</span>
+                <Button onClick={this.logOut} value="Log Out" className="logout"/>
                 <div className="chatArea">
                     {this.props.messages.map(
                         function (message, i) {
@@ -100,11 +100,10 @@ class Home extends React.Component {
                         }
                     )}
                 </div>
-                <Button onClick={this.logOut} value="Log Out"/>
 
 
                 <Paragraph className={(!this.props.typingBy || this.props.typingBy === this.props.user.userName) ? "classHide" : "classShow"}
-                           />
+                    typingBy = {this.props.typingBy} value='is typing...'/>
 
                 <div className="inputArea">
                     <EnterMessage value = {this.state.message} changeHandler={this.changeHandler} sendMessage={this.sendMessage}/>
