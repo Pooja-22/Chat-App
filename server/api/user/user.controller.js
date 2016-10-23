@@ -16,6 +16,7 @@ exports.createUser = function (req, res) {
     UserService.createUser(req.body, function (err, user) {
         if (err) {
             console.log(err);
+            return res.status(401).json(err);
         }
         else {
             return res.status(200).json(user);
@@ -28,8 +29,12 @@ exports.createUser = function (req, res) {
  */
 
 exports.getUser = function (req, res) {
-    var id = req.query.id;
-    UserService.getUser(id, function (err, user) {
+    var id = '';
+    if(req.query.id)
+        id = req.query;
+    else if (req.query.userName)
+        id = req.query;
+    UserService.getUser(req.query, function (err, user) {
         if (err) {
             console.log(err);
         }

@@ -49,6 +49,10 @@ class Home extends React.Component {
             this.props.dispatch(chatAction.stopTyping(user))
             }
         );
+        socket.on('chat', (data) => {
+            console.log("recieved message")
+            this.props.dispatch(chatAction.messageReceived(data))
+        });
     }
 
     sendMessage() {
@@ -88,7 +92,7 @@ class Home extends React.Component {
                     )}
                 </div>
 
-                <p className={!this.props.typingBy ? "classHide" : "classShow"}>
+                <p className={(!this.props.typingBy || this.props.typingBy === this.props.user.userName) ? "classHide" : "classShow"}>
                     {this.props.typingBy} is typing...
                 </p>
 

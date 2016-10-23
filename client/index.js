@@ -13,10 +13,6 @@ import routes from './routes';
 
 const store = configureStore();
 
-socket.on('chat', (data) => {
-    store.dispatch(messageReceived(data))
-});
-
 ReactDOM.render(<Provider store={store}>
         <Router routes={routes} history={browserHistory}/>
     </Provider>

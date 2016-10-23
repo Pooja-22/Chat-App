@@ -13,12 +13,19 @@ var User = require('./user.model');
  */
 
 exports.createUser = function (data, callback) {
-    User.create(data, function (err, user) {
-        if (err) {
-            callback(err)
+    User.findOne(data, function (err, user) {
+        if (user) {
+            callback("user already exists")
         }
         else {
-            callback(err, user)
+            User.create(data, function (err, user) {
+                if (err) {
+                    callback(err)
+                }
+                else {
+                    callback(err, user)
+                }
+            })
         }
     })
 };
@@ -27,8 +34,8 @@ exports.createUser = function (data, callback) {
  * Get user
  */
 
-exports.getUser = function (id, callback) {
-    User.findOne({'_id' : id}, function (err, user) {
+exports.getUser = function (data, callback) {
+    User.findOne(data, function (err, user) {
         if (err) {
             callback(err)
         }
