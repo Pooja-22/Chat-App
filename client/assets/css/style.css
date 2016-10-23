@@ -1,4 +1,5 @@
 /* Root component */
+
 .main {
     width: 60%;
     margin: auto;
@@ -37,7 +38,7 @@
     border-radius: 7px;
     margin-top: 40px;
     margin-left: 61px;
-    font-size: 18px;
+    font-size: 25px;
     color: #fff;
 }
 
@@ -57,15 +58,59 @@ p {
     word-wrap: break-word
 }
 
-.messageArea {
-    font-size: 22px;
-    background: lightblue;
+/* Home component */
+
+.home {
+    background : black;
+    padding:10px;
 }
 
-.inputArea {
-    border: 1px solid black;
-    padding: 10px;
-    margin-top: 20px;
+.home div:first-child {
+    padding-bottom : 10px;
+    border-bottom : 1px double #eee;
+}
+
+.home div button {
+    padding: 10px 30px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #bdc3c7;
+    background: linear-gradient(#bdc3c7, #95a5a6);
+    border: none;
+    outline: none;
+    float: right;
+    font-size : 18px;
+    letter-spacing : 1px;
+}
+
+.home div:first-child span {
+    width: 50%;
+    font-size: 34px;
+    font-weight: 500;
+    margin-top: -6px;
+    color: #fff
+}
+
+.home div:nth-child(2) {
+    max-height:510px;
+    overflow-y : scroll;
+    overflow-x: hidden;
+}
+
+.home div:nth-child(4) {
+    height : 40px;
+    margin-top:8px;
+}
+
+.home div:nth-child(4) input {
+    width:84%;
+    height : 35px;
+}
+
+.home div:nth-child(4) input:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 5px #9ecaed;
 }
 
 .left {
@@ -95,22 +140,4 @@ p {
 .sendBy {
     font-size: 15px;
 
-}
-
-.logout {
-    padding: 10px 30px;
-    font-weight: bold;
-    color: #FFF;
-    background-color: #bdc3c7;
-    background: linear-gradient(#bdc3c7, #95a5a6);
-    border: none;
-    outline: none;
-    float: right;
-}
-
-.userName {
-    width: 50%;
-    font-size: 34px;
-    font-weight: 500;
-    margin-top: -6px;
 }

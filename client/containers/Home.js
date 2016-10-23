@@ -91,9 +91,9 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="home">
                 
-                <Header clickHandler={this.logOut} btnText='Log Out' spanText={this.props.user.userName} greetings="Hello" btnStyle="logout" spanStyle='userName'/>
+                <Header clickHandler={this.logOut} btnText='Log Out' spanText={this.props.user.userName} greetings="Hello"/>
                 
                 <MessageList messages={this.props.messages} className="chatArea"/>
 

@@ -15,7 +15,7 @@ class InputArea extends React.Component {
         return (
             <div>
                 
-                <InputField value={balue} onChange={changeHandler} type="input" placeholder="Enter your message" required/>
+                <InputField value={value} onChange={changeHandler} type="input" placeholder="Type your message here..." required/>
                 
                 <Button onClick={sendMessage} value="Send"/>
                 
