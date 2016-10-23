@@ -3,7 +3,8 @@
  */
 
 import React from 'react';
-import InputField from './InputField'
+import InputField from './InputField';
+import Button from './Button';
 
 class EnterMessage extends React.Component {
 
@@ -11,7 +12,7 @@ class EnterMessage extends React.Component {
         return (
             <div>
                 <InputField value={this.props.value} onChange={this.props.changeHandler} type="input" placeholder="Enter your message" required/>
-                <button onClick={this.props.sendMessage}>Send</button>
+                <Button onClick={this.props.sendMessage} value="Send"/>
             </div>
         )
     }

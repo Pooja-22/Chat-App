@@ -8,6 +8,7 @@ import * as loginActions from '../actions/login.action';
 import {getCookie} from '../services/utilService';
 import { browserHistory } from 'react-router';
 import InputField from '../components/InputField';
+import Button from '../components/Button';
 
 class Login extends React.Component {
     constructor() {
@@ -59,8 +60,8 @@ class Login extends React.Component {
         return (
             <div>
                 <InputField value={this.state.userName} onChange={this.changeHandler} type="input" placeholder="Enter your Username" required/>
-                <button onClick={this.login}>Sign In</button>
-                <button onClick={this.signUp}>sign Up</button>
+                <Button onClick={this.login} value="Sign In"/>
+                <Button onClick={this.signUp} value="Sign Up"/>
                 <p className={!this.state.errorMessage ? "classHide" : "classShow"}>
                     Please enter user name
                 </p>
