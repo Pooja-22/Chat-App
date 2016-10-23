@@ -97,7 +97,7 @@ class Home extends React.Component {
                 </p>
 
                 <div className="inputArea">
-                    <EnterMessage changeHandler={this.changeHandler} sendMessage={this.sendMessage}/>
+                    <EnterMessage value = {this.state.message} changeHandler={this.changeHandler} sendMessage={this.sendMessage}/>
                 </div>
             </div>
         )

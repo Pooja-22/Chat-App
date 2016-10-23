@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import * as loginActions from '../actions/login.action';
 import {getCookie} from '../services/utilService';
 import { browserHistory } from 'react-router';
+import InputField from '../components/InputField';
 
 class Login extends React.Component {
     constructor() {
@@ -57,7 +58,7 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" value={this.state.userName} onChange={this.changeHandler}/>
+                <InputField value={this.state.userName} onChange={this.changeHandler} type="input" placeholder="Enter your Username" required/>
                 <button onClick={this.login}>Sign In</button>
                 <button onClick={this.signUp}>sign Up</button>
                 <p className={!this.state.errorMessage ? "classHide" : "classShow"}>
