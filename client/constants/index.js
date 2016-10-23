@@ -8,4 +8,5 @@ export const MESSAGE_SENT = 'MESSAGE_SENT';
 export const MESSAGES_LOADED = 'MESSAGES_LOADED';
 export const TYPING = 'TYPING';
 export const STOP_TYPING = 'STOP_TYPING';
+export const USER_EXISTS = 'USER_EXISTS';
 

@@ -1,3 +1,58 @@
+/* Root component */
+.main {
+    width : 60%;
+    margin: auto;
+}
+
+/* Login component */
+
+.loginDiv {
+    width : 50%;
+    margin:auto;
+    min-height:273px;
+    padding : 20px;
+    margin-top:150px;
+}
+
+.loginDiv input {
+    margin-left : 15%;
+    margin-top : 57px;
+    height : 45px;
+    width:260px;
+    font-size : 18px;
+    text-align:center;
+    border-radius: 7px;
+}
+
+.loginDiv input:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+.loginDiv button {
+    background: linear-gradient(#3CB371, #3CB371);
+    width : 100px;
+    height : 45px;
+    border-radius: 7px;
+    margin-top:40px;
+    margin-left:61px;
+    font-size : 18px;
+    color : #fff;
+}
+
+.loginDiv p {
+    text-align:center;
+    margin-top:25px;
+    font-size : 20px;
+    color : red;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    text-align:center;
+    font-size : 18px;
+}
+
 .messageArea {
     font-size: 22px;
     background: lightblue;
@@ -35,11 +90,7 @@
     font-size: 15px;
 
 }
-.main {
-    width : 60%;
-    margin: auto;
 
-}
 .logout {
     padding: 10px 30px;
     font-weight: bold;

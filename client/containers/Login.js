@@ -6,7 +6,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as loginActions from '../actions/login.action';
 import {getCookie} from '../services/utilService';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import InputField from '../components/InputField';
 import Button from '../components/Button';
 import Paragraph from '../components/Paragraph';
@@ -18,22 +18,20 @@ class Login extends React.Component {
         super();
         this.state = {
             userName: '',
-            errorMessage : false
         };
         this.changeHandler = this.changeHandler.bind(this);
         this.login = this.login.bind(this);
         this.signUp = this.signUp.bind(this);
-        this.showError = this.showError.bind(this);
     }
 
     componentWillMount() {
         let token = getCookie('token');
-        if(token)
+        if (token)
             browserHistory.push({
                 pathname: '/home'
             });
     }
-    
+
     changeHandler(e) {
         this.setState({
             userName: e.target.value
@@ -41,39 +39,31 @@ class Login extends React.Component {
     }
 
     login() {
-        if(this.state.userName)
-            this.props.dispatch(loginActions.login(this.state.userName))
-        else
-            this.showError()
+        this.props.dispatch(loginActions.login(this.state.userName))
     }
 
     signUp() {
-        if(this.state.userName)
-            this.props.dispatch(loginActions.signUp(this.state.userName))
-        else
-            this.showError()
-    }
-
-    showError () {
-        this.setState({
-            errorMessage : true
-        })
+        this.props.dispatch(loginActions.signUp(this.state.userName))
     }
 
     render() {
         return (
-            <div>
-                <InputField value={this.state.userName} onChange={this.changeHandler} type="input" placeholder="Enter your Username" required/>
+            <div className="loginDiv">
+                <InputField value={this.state.userName} onChange={this.changeHandler} type="input"
+                            placeholder="Enter Username" required/><br/>
                 <Button onClick={this.login} value="Sign In"/>
-                <Button onClick={this.signUp} value="Sign Up"/>
-                <Paragraph className={!this.state.errorMessage ? "classHide" : "classShow"} value="Please enter user name"/>
+                <Button onClick={this.signUp} value="Sign Up"/><br/>
+                <Paragraph className={!this.props.errorMessage ? "classHide" : "classShow"}
+                           value={this.props.errorMessage}/><br/>
             </div>
         )
     }
 }
 
-function mapStateToProps() {
-    return {};
+function mapStateToProps(state) {
+    return {
+        errorMessage: state.login.message
+    };
 }
 
 export default connect(mapStateToProps)(Login)
