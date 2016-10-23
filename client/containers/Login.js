@@ -9,6 +9,7 @@ import {getCookie} from '../services/utilService';
 import { browserHistory } from 'react-router';
 import InputField from '../components/InputField';
 import Button from '../components/Button';
+import Paragraph from '../components/Paragraph';
 
 class Login extends React.Component {
     constructor() {
@@ -24,14 +25,13 @@ class Login extends React.Component {
     }
 
     componentWillMount() {
-        var token = getCookie('token');
+        let token = getCookie('token');
         if(token)
             browserHistory.push({
                 pathname: '/home'
             });
     }
-
-
+    
     changeHandler(e) {
         this.setState({
             userName: e.target.value
@@ -62,9 +62,7 @@ class Login extends React.Component {
                 <InputField value={this.state.userName} onChange={this.changeHandler} type="input" placeholder="Enter your Username" required/>
                 <Button onClick={this.login} value="Sign In"/>
                 <Button onClick={this.signUp} value="Sign Up"/>
-                <p className={!this.state.errorMessage ? "classHide" : "classShow"}>
-                    Please enter user name
-                </p>
+                <Paragraph className={!this.state.errorMessage ? "classHide" : "classShow"} value="Please enter user name"/>
             </div>
         )
     }
