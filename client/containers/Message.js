@@ -3,7 +3,6 @@
  */
 
 import React from 'react';
-import {getCookie} from '../services/utilService';
 import {FormattedRelative} from 'react-intl';
 
 
@@ -11,27 +10,17 @@ class Message extends React.Component {
 
     constructor() {
         super();
-        this.state = {
-            token: ''
-        }
-    }
-
-    componentDidMount() {
-        var token = getCookie('token');
-        this.setState({
-            token: token
-        })
     }
 
     render() {
 
-        let {message} = this.props , key = '', cssClass = '';
-        if (this.state.token == message.from.id){
-            cssClass =   'leftAlign';
+        let {message} = this.props, key = '', cssClass = '';
+        if (message.isCurrentuser) {
+            cssClass = 'leftAlign';
             key = "Me"
         }
-        else{
-            key = message.from.name.substring(0,1);
+        else {
+            key = message.from.name.substring(0, 1);
             cssClass = 'rightAlign';
         }
 
@@ -43,15 +32,15 @@ class Message extends React.Component {
                     {key}
                 </div>
 
-                <p className = 'subChatAreaP'>
+                <div className='subChatAreaP'>
 
-                    <span className='left'>{message.from.name}</span><br/>
+                    <span className='left username'>{message.from.name}</span>
 
-                    <span className='right top'><FormattedRelative value={message.time} /></span><br/>
+                    <span className='right top time'><FormattedRelative value={message.time}/></span>
 
-                    <span>{message.text}</span>
+                    <span className="message">{message.text}</span>
 
-                </p>
+                </div>
 
             </div>
 

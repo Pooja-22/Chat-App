@@ -3,25 +3,24 @@
  */
 
 import React from 'react';
-import InputField from '../components/InputField';
-import Button from '../components/Button';
 
 class InputArea extends React.Component {
 
     render() {
-        
-        let {value, changeHandler, className, sendMessage } = this.props;
-        
+
+        let {value, changeHandler, className, sendMessage} = this.props;
+
         return (
             <div className={className}>
 
                 <form onSubmit={sendMessage}>
-                    
-                    <InputField value={value} onChange={changeHandler} type="input" placeholder="Type your message here..." required/>
-                    <Button value="Send"/>
-                    
+
+                    <input value={value} onChange={changeHandler} type="input"
+                                placeholder="Type your message here..." required/>
+                    <button> Send</button>
+
                 </form>
-                
+
             </div>
         )
     }

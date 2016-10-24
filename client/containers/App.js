@@ -7,9 +7,10 @@ import {connect} from 'react-redux';
 require('../assets/css/style.css');
 
 class App extends React.Component {
-    constructor () {
+    constructor() {
         super();
     }
+
 
     render() {
         return (

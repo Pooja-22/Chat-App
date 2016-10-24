@@ -13,13 +13,13 @@ import {socket} from '../socket';
  * @returns {function()}
  */
 
-export function loadMessages(userName, userId) {
+export function loadMessages() {
     return (dispatch) => {
         axios({
             method: 'get',
             url: '/api/chat'
         }).then((response) => {
-            dispatch(messagesLoaded(userName, userId, response.data));
+            dispatch(messagesLoaded(response.data));
         })
     }
 }
@@ -32,15 +32,11 @@ export function loadMessages(userName, userId) {
  * @returns {{type, state: {user: {userName: *, userId: *}, messages: *}}}
  */
 
-export function messagesLoaded (userName, userId, messages) {
+export function messagesLoaded(messages) {
     return {
-        type : MESSAGES_LOADED,
-        state : {
-            user : {
-                userName : userName,
-                userId : userId
-            },
-            messages : messages
+        type: MESSAGES_LOADED,
+        state: {
+            messages: messages
         }
     }
 }
@@ -57,14 +53,14 @@ export function sendMessage(message, user) {
         axios({
             method: 'post',
             url: '/api/chat',
-            data : {
-                text : message,
-                from : user,
-                time : new Date()
+            data: {
+                text: message,
+                from: user,
+                time: new Date()
             }
         }).then((response) => {
-            socket.emit('chat', {text : message, from : user, time : response.data.time});
-            dispatch(messageReceived({text : message, from : user, time : response.data.time}))
+            socket.emit('chat', {text: message, from: user, time: response.data.time, id: socket.id});
+            dispatch(messageReceived({text: message, from: user, time: response.data.time, id: socket.id, isSent: true}))
         })
     }
 }
@@ -75,7 +71,7 @@ export function sendMessage(message, user) {
  * @returns {{type, message: *}}
  */
 
-export function messageReceived (message) {
+export function messageReceived(message) {
     return {
         type: MESSAGE_RECEIVED,
         message
@@ -88,7 +84,7 @@ export function messageReceived (message) {
  * @returns {{type, userName: *}}
  */
 
-export function typing (userName) {
+export function typing(userName) {
     return {
         type: TYPING,
         userName
@@ -100,7 +96,7 @@ export function typing (userName) {
  * @returns {{type}}
  */
 
-export function stopTyping () {
+export function stopTyping() {
     return {
         type: STOP_TYPING
     }

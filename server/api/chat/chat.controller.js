@@ -4,7 +4,7 @@
 
 'use strict';
 
-var ChatService = require('./chat.service');
+import {addMessage, getMessages} from './chat.service'
 
 /**
  *Save Chat
@@ -13,7 +13,7 @@ var ChatService = require('./chat.service');
  */
 
 exports.addMessage = function (req, res) {
-    ChatService.addMessage(req.body, function (err, chat) {
+    addMessage(req.body, function (err, chat) {
         if (err) {
             console.log(err);
         }
@@ -28,7 +28,7 @@ exports.addMessage = function (req, res) {
  */
 
 exports.getMessages = function (req, res) {
-    ChatService.getMessages(function (err, chat) {
+    getMessages(function (err, chat) {
         if (err) {
             console.log(err);
         }

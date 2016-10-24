@@ -8,8 +8,7 @@ import mongoose from 'mongoose';
 import path from 'path';
 import config from '../webpack.config.js';
 import open from 'open';
-import SocketIo from 'socket.io';
-var bodyParser = require('body-parser');
+import bodyParser from 'body-parser'
 
 const port = 3000;
 const app = express();
@@ -17,8 +16,6 @@ const compiler = webpack(config);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-require('../server/routes')(app);
 
 mongoose.connect('mongodb://localhost/chat-app');
 mongoose.connection.on('error', function (err) {
@@ -33,6 +30,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
+require('../server/routes')(app);
 
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '../client/index.html'));
@@ -46,16 +44,5 @@ const server = app.listen(port, function (err) {
     }
 });
 
-const io = new SocketIo(server);
 
-io.on('connection', function(socket) {
-    socket.on('chat', function(data) {
-        socket.broadcast.emit('chat', data);
-    });
-    socket.on('typing', function (data) {
-        socket.broadcast.emit('typing', data.user);
-    });
-    socket.on('stop typing', function (data) {
-        socket.broadcast.emit('stop typing', data.user);
-    });
-});
+require('./socket')(server);

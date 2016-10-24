@@ -1,15 +1,11 @@
-/**
- * Created by pooja on 22/10/16.
- */
-
 'use strict';
 
-var express = require('express');
-var controller = require('./chat.controller.js');
-var router = express.Router();
+import express from 'express';
+import {getMessages, addMessage} from './chat.controller'
+let router = express.Router();
 
-router.get('/', controller.getMessages);
-router.post('/', controller.addMessage);
+router.get('/', getMessages);
+router.post('/', addMessage);
 
 module.exports = router;
 

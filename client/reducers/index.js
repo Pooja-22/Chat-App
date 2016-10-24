@@ -2,13 +2,11 @@
  * Created by pooja on 21/10/16.
  */
 
-import message from './message.reducer';
-import login from './login.reducer';
 import {combineReducers} from 'redux'
+import message from './message.reducer';
 
 const rootReducer = combineReducers({
-    message,
-    login
+    message
 });
 
 export default rootReducer;

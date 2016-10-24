@@ -4,19 +4,16 @@
 
 'use strict';
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-var ChatSchema = new Schema({
+let ChatSchema = new Schema({
     text: {
-        type : String
+        type: String
     },
-    from : {
-        id : {
-            type : String
-        },
+    from: {
         name: {
-            type : String
+            type: String
         }
     },
     time: {type: Date, default: new Date()}
