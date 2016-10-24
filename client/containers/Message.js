@@ -25,19 +25,19 @@ class Message extends React.Component {
 
     render() {
 
-        let {message} = this.props , key = '', value = '';
+        let {message} = this.props , key = '', cssClass = '';
         if (this.state.token == message.from.id){
-            value = 380;
+            cssClass =   'leftAlign';
             key = "Me"
         }
         else{
             key = message.from.name.substring(0,1);
-            value = 0;
+            cssClass = 'rightAlign';
         }
 
 
         return (
-            <div className="subChatArea" style={{marginLeft : value}}>
+            <div className={"subChatArea " + cssClass}>
 
                 <div className={"circle " + key.toLowerCase()}>
                     {key}
@@ -47,7 +47,7 @@ class Message extends React.Component {
 
                     <span className='left'>{message.from.name}</span><br/>
 
-                    <span className='right' style={{marginTop:-17}}><FormattedRelative value={message.time} /></span><br/>
+                    <span className='right top'><FormattedRelative value={message.time} /></span><br/>
 
                     <span>{message.text}</span>
 

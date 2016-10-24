@@ -190,3 +190,15 @@ p {
     background-color:mediumpurple !important;
 ;
 }
+
+.leftAlign {
+    margin-left : 380px;
+}
+
+.rightAlign {
+    margin-left : 0px;
+}
+
+.top {
+    margin-top:-17px;
+}
