@@ -17,7 +17,7 @@ class Login extends React.Component {
     constructor() {
         super();
         this.state = {
-            userName: '',
+            userName: ''
         };
         this.changeHandler = this.changeHandler.bind(this);
         this.login = this.login.bind(this);

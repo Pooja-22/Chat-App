@@ -34,7 +34,7 @@ class Home extends React.Component {
         var token = getCookie('token');
         this.setState({
             token: token
-        })
+        });
         if (!token)
             browserHistory.push({
                 pathname: '/'
@@ -44,6 +44,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
+        
         socket.on('typing', user => {
             this.props.dispatch(chatAction.typing(user))
             }
@@ -55,6 +56,7 @@ class Home extends React.Component {
         socket.on('chat', (data) => {
             this.props.dispatch(chatAction.messageReceived(data))
         });
+
     }
 
     sendMessage(e) {
@@ -96,7 +98,7 @@ class Home extends React.Component {
                 
                 <Header clickHandler={this.logOut} btnText='Log Out' spanText={this.props.user.userName} greetings="Hello" className="header"/>
                 
-                <MessageList messages={this.props.messages} className="chatArea"/>
+                <MessageList messages={this.props.messages} className="chatArea"  />
 
                 <Paragraph className={(!this.props.typingBy || this.props.typingBy === this.props.user.userName) ? "classHide" : "classShow"}
                     typingBy = {this.props.typingBy} value='is typing...'/>
