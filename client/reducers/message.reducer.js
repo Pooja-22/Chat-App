@@ -2,7 +2,7 @@
  * Created by pooja on 21/10/16.
  */
 
-import {MESSAGE_RECEIVED, MESSAGE_SENT, MESSAGES_LOADED, TYPING, STOP_TYPING} from '../constants';
+import {MESSAGE_RECEIVED, MESSAGES_LOADED, TYPING, STOP_TYPING} from '../constants';
 
 let initialState = {
     user : {

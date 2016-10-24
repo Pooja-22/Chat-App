@@ -2,9 +2,16 @@
  * Created by pooja on 21/10/16.
  */
 
-import {MESSAGE_RECEIVED, MESSAGE_SENT, MESSAGES_LOADED, TYPING, STOP_TYPING} from '../constants';
+import {MESSAGE_RECEIVED, MESSAGES_LOADED, TYPING, STOP_TYPING} from '../constants';
 import axios from 'axios';
 import {socket} from '../socket';
+
+/**
+ * Trigger to load all messages
+ * @param userName
+ * @param userId
+ * @returns {function()}
+ */
 
 export function loadMessages(userName, userId) {
     return (dispatch) => {
@@ -16,6 +23,14 @@ export function loadMessages(userName, userId) {
         })
     }
 }
+
+/**
+ * Trigger when all messages are loaded
+ * @param userName
+ * @param userId
+ * @param messages
+ * @returns {{type, state: {user: {userName: *, userId: *}, messages: *}}}
+ */
 
 export function messagesLoaded (userName, userId, messages) {
     return {
@@ -29,6 +44,13 @@ export function messagesLoaded (userName, userId, messages) {
         }
     }
 }
+
+/**
+ * Trigger while sending a message
+ * @param message
+ * @param user
+ * @returns {function()}
+ */
 
 export function sendMessage(message, user) {
     return (dispatch) => {
@@ -47,6 +69,12 @@ export function sendMessage(message, user) {
     }
 }
 
+/**
+ * Trigger when message is received
+ * @param message
+ * @returns {{type, message: *}}
+ */
+
 export function messageReceived (message) {
     return {
         type: MESSAGE_RECEIVED,
@@ -54,12 +82,23 @@ export function messageReceived (message) {
     }
 }
 
+/**
+ * Trigger when user is typing
+ * @param userName
+ * @returns {{type, userName: *}}
+ */
+
 export function typing (userName) {
     return {
         type: TYPING,
         userName
     }
 }
+
+/**
+ * Trigger when user stops typing
+ * @returns {{type}}
+ */
 
 export function stopTyping () {
     return {

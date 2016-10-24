@@ -2,9 +2,21 @@
  * Created by pooja on 23/10/16.
  */
 
+/**
+ * Set cookie
+ * @param cname
+ * @param cvalue
+ */
+
 export function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + "; ";
 }
+
+/**
+ * get cookie
+ * @param cname
+ * @returns {*}
+ */
 
 export function getCookie(cname) {
     var name = cname + "=";

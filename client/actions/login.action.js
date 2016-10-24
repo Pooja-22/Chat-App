@@ -8,6 +8,11 @@ import {loadMessages} from './chat.action';
 import {setCookie} from '../services/utilService';
 import {USER_EXISTS} from '../constants';
 
+/**
+ * Create a user
+ * @param userName
+ * @returns {function()}
+ */
 
 export function signUp(userName) {
     return (dispatch) => {
@@ -31,6 +36,12 @@ export function signUp(userName) {
         };
     }
 }
+
+/**
+ * User login
+ * @param userName
+ * @returns {function()}
+ */
 
 export function login(userName) {
     return (dispatch) => {
@@ -57,6 +68,12 @@ export function login(userName) {
     };
 }
 
+/**
+ * get current user
+ * @param id
+ * @returns {function()}
+ */
+
 export function getUser(id) {
     return (dispatch) => {
         axios({
@@ -79,12 +96,23 @@ export function getUser(id) {
 
 }
 
+/**
+ * return message on basis of existence of user
+ * @param message
+ * @returns {{type, message: *}}
+ */
+
 export function user(message) {
     return {
         type: USER_EXISTS,
         message
     }
 }
+
+/**
+ * Set cookies, redirect to home & load all messages
+ * @param response
+ */
 
 function dispatchAction(response) {
     setCookie('token', response.data._id);
