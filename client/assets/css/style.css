@@ -119,6 +119,11 @@ p {
     height: 70px;
     border-radius: 35px;
     background : #fff;
+    text-align: center;
+    line-height: 70px;
+    text-transform: capitalize;
+    font-size:18px;
+    font-weight:600;
 }
 
 .inputArea {

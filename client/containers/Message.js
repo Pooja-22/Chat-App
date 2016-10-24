@@ -19,20 +19,23 @@ class Message extends React.Component {
         this.setState({
             token: token
         })
+
     }
 
     render() {
 
         let {message} = this.props;
-        let value= ''
+        let res = message.from.name.substring(0,1);
+        let value= '';
         if (this.state.token == message.from.id)
-            value = 380
+            value = 380;
         else
-            value = 0
+            value = 0;
 
         return (
             <div className="subChatArea" style={{marginLeft : value}}>
                 <div className="circle">
+                    {res}
                 </div>
                 <p className = 'subChatAreaP'>
 

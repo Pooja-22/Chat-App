@@ -50,11 +50,9 @@ const io = new SocketIo(server);
 
 io.on('connection', function(socket) {
     socket.on('chat', function(data) {
-        console.log("chat message", data)
         socket.broadcast.emit('chat', data);
     });
     socket.on('typing', function (data) {
-        console.log('typing', data)
         socket.broadcast.emit('typing', data.user);
     });
     socket.on('stop typing', function (data) {
