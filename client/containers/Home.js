@@ -57,7 +57,8 @@ class Home extends React.Component {
         });
     }
 
-    sendMessage() {
+    sendMessage(e) {
+        e.preventDefault();
         if (this.state.message) {
             this.props.dispatch(chatAction.sendMessage(this.state.message, {
                 name: this.props.user.userName,

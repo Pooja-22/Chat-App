@@ -4,11 +4,13 @@
 
 import React from 'react';
 import {getCookie} from '../services/utilService';
+import {FormattedRelative} from 'react-intl';
+
 
 class Message extends React.Component {
 
     constructor() {
-        super()
+        super();
         this.state = {
             token: ''
         }
@@ -24,13 +26,15 @@ class Message extends React.Component {
 
     render() {
 
-        let {message} = this.props;
-        let res = message.from.name.substring(0,1);
-        let value= '';
-        if (this.state.token == message.from.id)
+        let {message} = this.props , res = '', value = '';
+        if (this.state.token == message.from.id){
             value = 380;
-        else
+            res = "Me"
+        }
+        else{
+            res = message.from.name.substring(0,1);
             value = 0;
+        }
 
         return (
             <div className="subChatArea" style={{marginLeft : value}}>
@@ -44,7 +48,7 @@ class Message extends React.Component {
                     </span><br/>
 
                     <span className='right' style={{marginTop:-17}}>
-                        time
+                        <FormattedRelative value={message.time} />
                     </span><br/>
 
                     <span>

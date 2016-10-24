@@ -17,7 +17,7 @@ export function loadMessages(userName, userId) {
     }
 }
 
-export default function messagesLoaded (userName, userId, messages) {
+export function messagesLoaded (userName, userId, messages) {
     return {
         type : MESSAGES_LOADED,
         state : {
@@ -37,7 +37,8 @@ export function sendMessage(message, user) {
             url: '/api/chat',
             data : {
                 text : message,
-                from : user
+                from : user,
+                time : new Date()
             }
         }).then((response) => {
             socket.emit('chat', {text : message, from : user, time : response.data.time});

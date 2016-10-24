@@ -14,10 +14,13 @@ class InputArea extends React.Component {
         
         return (
             <div className={className}>
-                
-                <InputField value={value} onChange={changeHandler} type="input" placeholder="Type your message here..." required/>
-                
-                <Button onClick={sendMessage} value="Send"/>
+
+                <form onSubmit={sendMessage}>
+                    
+                    <InputField value={value} onChange={changeHandler} type="input" placeholder="Type your message here..." required/>
+                    <Button value="Send"/>
+                    
+                </form>
                 
             </div>
         )

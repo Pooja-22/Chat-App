@@ -11,7 +11,7 @@ class Button extends React.Component {
         let {value, onClick, className } = this.props;
 
         return (
-            <button onClick={this.props.onClick}  className={this.props.className}>{this.props.value}</button>
+            <button type="submit" onClick={this.props.onClick}  className={this.props.className}>{this.props.value}</button>
         );
 
     }
