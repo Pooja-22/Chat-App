@@ -105,6 +105,7 @@ p {
     margin-bottom : 10px;
     min-height : 60px;
     padding : 10px;
+    clear: both;
 }
 
 .subChatArea p {
@@ -149,13 +150,11 @@ p {
 .left {
     float : left;
     clear: both;
-
 }
 
 .right {
     float : right;
     clear: both;
-
 }
 
 .clearfix:before, .clearfix:after {

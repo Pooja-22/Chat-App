@@ -108,7 +108,6 @@ class Home extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
 
     return {
         messages: state.message.messages,
