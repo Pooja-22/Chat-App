@@ -39,7 +39,7 @@ class Message extends React.Component {
         return (
             <div className="subChatArea" style={{marginLeft : value}}>
 
-                <div className="circle">
+                <div className={"circle " + key.toLowerCase()}>
                     {key}
                 </div>
 

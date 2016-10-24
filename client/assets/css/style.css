@@ -169,3 +169,24 @@ p {
 .clearfix:after {
     clear: both;
 }
+
+.a , .b , .c , .d , .e , .f , .y{
+    background-color : mediumpurple !important;
+}
+
+.g, .h, .i, .j, .k, .l {
+    background-color : indianred !important;
+}
+
+.m, .n, .o, .p, .q, .r, .z{
+    background-color : seagreen !important;
+}
+
+.s, .t, .u, .v, .w, .x {
+    background-color : rosybrown !important;
+}
+
+.me {
+    background-color:mediumpurple !important;
+;
+}
