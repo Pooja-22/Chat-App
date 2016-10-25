@@ -2,7 +2,7 @@
 
 ## Get Started
 
-You can clone repository [App](https://github.com/Pooja-22/Chat-App.git) and install dependency.
+You can clone repository [Chat-App](https://github.com/Pooja-22/Chat-App.git) and install dependency.
 
 ### Prerequisites
 
